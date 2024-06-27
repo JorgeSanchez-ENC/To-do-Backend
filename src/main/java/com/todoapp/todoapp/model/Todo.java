@@ -3,11 +3,10 @@ package com.todoapp.todoapp.model;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class Todo {
 
-    private static final AtomicLong idCount = new AtomicLong();
+
 
     private Long id;
     private String text;
@@ -18,7 +17,6 @@ public class Todo {
     private LocalDateTime creationDate;
 
     public Todo(String text, LocalDateTime dueDate, boolean done, LocalDateTime doneDate, Priority priority, LocalDateTime creationDate) {
-        this.id = idCount.incrementAndGet();
         this.text = text;
         this.dueDate = dueDate;
         this.done = done;
@@ -79,7 +77,11 @@ public class Todo {
         return id;
     }
 
-    private enum Priority{
+    public void setId(Long id){
+        this.id=id;
+    }
+
+    public enum Priority{
         HIGH,MEDIUM,LOW
     }
 
