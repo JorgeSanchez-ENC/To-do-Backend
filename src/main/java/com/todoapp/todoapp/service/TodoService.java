@@ -2,13 +2,11 @@ package com.todoapp.todoapp.service;
 
 
 import com.todoapp.todoapp.model.Todo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
@@ -42,9 +40,10 @@ public class TodoService {
         }
     }
 
-    public int update(Todo todo){
-        if(todos.contains(todo)){
-            int index = todos.indexOf(todo);
+    public int update(Long id,Todo todo){
+        Todo todoCurrent = findById(id);
+        if(todoCurrent != null){
+            int index = todos.indexOf(todoCurrent);
             todos.set(index,todo);
             return index;
         }else{
@@ -58,6 +57,18 @@ public class TodoService {
         }else{
             throw new RuntimeException("There is no such To do element");
         }
+    }
+
+    public void markAsDone(Long id){
+        Todo todo = findById(id);
+        todo.setDone(true);
+        todo.setDoneDate(LocalDateTime.now());
+    }
+
+    public void markAsUndone(Long id){
+        Todo todo = findById(id);
+        todo.setDone(false);
+        todo.setDoneDate(null);
     }
 
 
