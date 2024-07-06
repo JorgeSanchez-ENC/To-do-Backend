@@ -1,7 +1,6 @@
 package com.todoapp.todoapp.model;
 
-import org.springframework.cglib.core.Local;
-
+import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
 
 public class Todo {
@@ -10,8 +9,9 @@ public class Todo {
 
     private Long id;
     private String text;
+    @DateTimeFormat
     private LocalDateTime dueDate;
-    private boolean done = false;
+    private boolean done;
     private LocalDateTime doneDate;
     private Priority priority;
     private LocalDateTime creationDate;
