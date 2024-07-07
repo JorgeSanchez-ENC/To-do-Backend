@@ -17,8 +17,9 @@ import java.util.stream.Collectors;
 @Service
 public class TodoService {
     private final List<Todo> todos = new ArrayList<>();
-    private static final AtomicLong idCount = new AtomicLong();
+    public static final AtomicLong idCount = new AtomicLong();
     private int pageSize = 10;
+
     public List<Todo> findAll(){
         return todos;
     }

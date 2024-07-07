@@ -31,7 +31,7 @@ public class TodoController {
         try{
             todoService.create(todo);
             System.out.println(todo.getText());
-            return ResponseEntity.status(HttpStatus.CREATED).body("Successfuly created To do" + todo.getId());
+            return ResponseEntity.status(HttpStatus.CREATED).body("Successfully created To do" + todo.getId());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
@@ -42,7 +42,7 @@ public class TodoController {
         try{
             todoService.update(id,todo);
 
-            return ResponseEntity.status(HttpStatus.OK).body("Successfuly updated To do" + todo.getId());
+            return ResponseEntity.status(HttpStatus.OK).body("Successfully updated To do" + todo.getId());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
@@ -52,7 +52,7 @@ public class TodoController {
     public ResponseEntity<?> doneTodo(@PathVariable Long id){
         try{
             todoService.markAsDone(id);
-            return ResponseEntity.ok("Successfuly marked as done");
+            return ResponseEntity.ok("Successfully marked as done");
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
@@ -62,7 +62,7 @@ public class TodoController {
     public ResponseEntity<?> undoneTodo(@PathVariable Long id){
         try{
             todoService.markAsUndone(id);
-            return ResponseEntity.ok("Successfuly marked as undone");
+            return ResponseEntity.ok("Successfully marked as undone");
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
@@ -72,7 +72,7 @@ public class TodoController {
     public ResponseEntity<?> deleteTodo(@PathVariable Long id){
         try{
             todoService.remove(id);
-            return ResponseEntity.ok("Successfuly removed");
+            return ResponseEntity.ok("Successfully removed");
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
