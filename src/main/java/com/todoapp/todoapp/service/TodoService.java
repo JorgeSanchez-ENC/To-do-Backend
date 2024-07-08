@@ -60,6 +60,7 @@ public class TodoService {
         if(todoCurrent != null){
             int index = todos.indexOf(todoCurrent);
             todo.setId(id);
+            todo.setCreationDate(todoCurrent.getCreationDate());
             todos.set(index,todo);
             return index;
         }else{
